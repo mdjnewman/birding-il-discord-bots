@@ -1,9 +1,18 @@
-import discord
+#!/usr/bin/env python3
+
+import logging
 import os
 import re
-from keep_alive import keep_alive
 from itertools import cycle
+
+import discord
 from discord.ext import tasks
+
+from .keepalive import keep_alive
+
+logging.basicConfig(
+    level=os.environ.get('LOGLEVEL', 'INFO').upper()
+)
 
 # Replace YOUR_DISCORD_BOT_TOKEN with your actual bot token
 DISCORD_BOT_TOKEN = os.environ['DISCORD_BOT_SECRET']
@@ -24,11 +33,12 @@ status = cycle(['Helping Users Join','Assisting with Server Invites'])
 @client.event
 async def on_ready():
     change_status.start()
-    print(f'We have logged in as {client.user}')
+    logging.info(f'We have logged in as {client.user}')
 
 # Event to run when a message is sent in the server
 @client.event
 async def on_message(message):
+    logging.debug("Received message %s", message)
     # Ignore messages sent by the bot itself
     if message.author == client.user:
         return
@@ -80,6 +90,7 @@ async def on_message(message):
 # Event to run when a new member joins the server
 @client.event
 async def on_member_join(member):
+    logging.debug("Member joined %s", member)
     # Check if the member is a bot (we don't want to add the role to bots)
     if member.bot:
         return
