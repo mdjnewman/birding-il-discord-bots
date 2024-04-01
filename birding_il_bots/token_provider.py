@@ -7,7 +7,7 @@ from google.cloud import secretmanager
 LOG = logging.getLogger(__name__)
 
 
-def get_token(bot_name: str):
+def get_token_for_bot(bot_name: str):
     token_from_env = os.getenv(f'DISCORD_{bot_name.upper()}_BOT_TOKEN')
 
     if token_from_env:

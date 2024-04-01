@@ -2,11 +2,10 @@
 
 
 import logging.config
-import os
 from pathlib import Path
 
 from .agree_bot import client as agree_bot
-from .token_provider import get_token
+from .token_provider import get_token_for_bot
 
 source_path = Path(__file__).resolve()
 source_dir = source_path.parent
@@ -17,10 +16,5 @@ logging.config.fileConfig(Path(source_dir / "logging.ini"))
 LOG = logging.getLogger(__name__)
 
 
-# Replace YOUR_DISCORD_BOT_TOKEN with your actual bot token
-agree_bot_token = get_token("agree")
-
-
-# Run the bot with the provided token
-# keep_alive()
+agree_bot_token = get_token_for_bot("agree")
 agree_bot.run(agree_bot_token, log_handler=None)
