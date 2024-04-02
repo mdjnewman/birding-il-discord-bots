@@ -1,1 +1,3 @@
 .venv/
+SCRATCH.md
+deployment/.terraform/
