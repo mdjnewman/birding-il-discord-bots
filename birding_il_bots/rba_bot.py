@@ -288,8 +288,8 @@ filtered_species = {
 }
 
 # Replace YOUR_DISCORD_CHANNEL_ID with the ID of the channel where you want to send messages
-# DISCORD_CHANNEL_ID = '1136054663674867912' # ebird-alerts in Birding IL
-DISCORD_CHANNEL_ID = '1224892992037458021'  # ebird-rarities in test server
+DISCORD_CHANNEL_ID = '1136054663674867912' # ebird-alerts in Birding IL
+# DISCORD_CHANNEL_ID = '1224892992037458021'  # ebird-rarities in test server
 
 # Replace YOUR_EBIRD_API_KEY with your eBird API key
 EBIRD_API_KEY = get_current_version_of_text_secret("ebird-api-key")
