@@ -109,4 +109,3 @@ resource "google_compute_disk" "bot_compute_disk" {
     type = "VIRTIO_SCSI_MULTIQUEUE"
   }
 }
-P
