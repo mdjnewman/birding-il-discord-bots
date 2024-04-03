@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import logging.config
 from pathlib import Path
 import asyncio

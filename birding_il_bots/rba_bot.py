@@ -14,7 +14,7 @@ LOG = logging.getLogger(__name__)
 
 filtered_species = {
     "Snow Goose",
-    "Ross’s Goose"
+    "Ross's Goose",
     "Greater White-fronted Goose",
     "Cackling Goose",
     "Canada Goose",
@@ -57,7 +57,7 @@ filtered_species = {
     "Yellow-billed Cuckoo",
     "Black-billed Cuckoo",
     "Common Nighthawk",
-    "Chuck-will’s-widow",
+    "Chuck-will's-widow",
     "Eastern Whip-poor-will",
     "Chimney Swift",
     "Ruby-throated Hummingbird",
@@ -78,7 +78,7 @@ filtered_species = {
     "Stilt Sandpiper",
     "Sanderling",
     "Dunlin",
-    "Baird’s Sandpiper",
+    "Baird's Sandpiper",
     "Least Sandpiper",
     "White-rumped Sandpiper",
     "Buff-breasted Sandpiper",
@@ -87,16 +87,16 @@ filtered_species = {
     "Short-billed Dowitcher",
     "Long-billed Dowitcher",
     "American Woodcock",
-    "Wilson’s Snipe",
+    "Wilson's Snipe",
     "Spotted Sandpiper",
     "Solitary Sandpiper",
     "Lesser Yellowlegs",
     "Willet",
     "Greater Yellowlegs",
-    "Wilson’s Phalarope",
+    "Wilson's Phalarope",
     "Red-necked Phalarope",
-    "Bonaparte’s Gull",
-    "Franklin’s Gull",
+    "Bonaparte's Gull",
+    "Franklin's Gull",
     "Ring-billed Gull",
     "Herring Gull",
     "Iceland Gull",
@@ -106,7 +106,7 @@ filtered_species = {
     "Caspian Tern",
     "Black Tern",
     "Common Tern",
-    "Forster’s Tern",
+    "Forster's Tern",
     "Common Loon",
     "Double-crested Cormorant",
     "American White Pelican",
@@ -124,7 +124,7 @@ filtered_species = {
     "Osprey",
     "Northern Harrier",
     "Sharp-shinned Hawk",
-    "Cooper’s Hawk",
+    "Cooper's Hawk",
     "Bald Eagle",
     "Red-shouldered Hawk",
     "Broad-winged Hawk",
@@ -159,7 +159,7 @@ filtered_species = {
     "Least Flycatcher",
     "Eastern Phoebe",
     "White-eyed Vireo",
-    "Bell’s Vireo",
+    "Bell's Vireo",
     "Yellow-throated Vireo",
     "Blue-headed Vireo",
     "Philadelphia Vireo",
@@ -185,10 +185,10 @@ filtered_species = {
     "Brown Creeper",
     "Blue-gray Gnatcatcher",
     "Carolina Wren",
-    "House Wren ",
-    "Winter Wren ",
+    "House Wren",
+    "Winter Wren",
     "Sedge Wren",
-    "Marsh Wren ",
+    "Marsh Wren",
     "Gray Catbird",
     "Brown Thrasher",
     "Northern Mockingbird",
@@ -196,7 +196,7 @@ filtered_species = {
     "Eastern Bluebird",
     "Veery",
     "Gray-cheeked Thrush",
-    "Swainson’s Thrush",
+    "Swainson's Thrush",
     "Hermit Thrush",
     "Wood Thrush",
     "American Robin",
@@ -220,11 +220,11 @@ filtered_species = {
     "White-crowned Sparrow",
     "White-throated Sparrow",
     "Vesper Sparrow",
-    "LeConte’s Sparrow",
-    "Henslow’s Sparrow",
+    "LeConte's Sparrow",
+    "Henslow's Sparrow",
     "Savannah Sparrow",
     "Song Sparrow",
-    "Lincoln’s Sparrow",
+    "Lincoln's Sparrow",
     "Swamp Sparrow",
     "Eastern Towhee",
     "Yellow-breasted Chat",
@@ -235,7 +235,7 @@ filtered_species = {
     "Red-winged Blackbird",
     "Brown-headed Cowbird",
     "Rusty Blackbird",
-    "Brewer’s Blackbird",
+    "Brewer's Blackbird",
     "Common Grackle",
     "Ovenbird",
     "Louisiana Waterthrush",
@@ -269,7 +269,7 @@ filtered_species = {
     "Prairie Warbler",
     "Black-throated Green Warbler",
     "Canada Warbler",
-    "Wilson’s Warbler",
+    "Wilson's Warbler",
     "Summer Tanager",
     "Scarlet Tanager",
     "Northern Cardinal",
@@ -328,8 +328,6 @@ def check_for_new_sightings():
     response.raise_for_status()
     sightings = response.json()
 
-    LOG.info(f'Total of {len(sightings)} returned')
-
     # Get the current time in UTC timezone
     current_time_utc = datetime.utcnow()
 
@@ -340,6 +338,8 @@ def check_for_new_sightings():
     current_time = current_time_utc.astimezone(eastern_timezone)
 
     embeds = []
+    already_seen_this_run = []
+    filtered_out_this_run = []
 
     for new_sighting in sightings:
         # Create a unique ID for the sighting using species code, county, and observation date
@@ -347,6 +347,7 @@ def check_for_new_sightings():
             new_sighting['subnational2Name'] + new_sighting['obsDt'][:10]
 
         if new_sighting_id in old_sightings:
+            already_seen_this_run.append(new_sighting_id)
             continue
 
         comName = new_sighting['comName'].split(
@@ -354,38 +355,23 @@ def check_for_new_sightings():
 
         # Check if the species is not in the filtered list
         if comName in filtered_species:
+            filtered_out_this_run.append(new_sighting_id)
             continue
 
-        # Step 2: Fetch the checklist details to check its submission time
-        checklist_url = f'https://api.ebird.org/v2/product/checklist/view/{new_sighting["subId"]}'
-        checklist_response = requests.get(
-            checklist_url, headers={'X-eBirdApiToken': EBIRD_API_KEY})
-        checklist_response.raise_for_status()
-        checklist_data = checklist_response.json()
+        old_sightings.append(new_sighting_id)
 
-        # Get the submission time from the checklist details
-        submission_time_str = checklist_data['creationDt']
+        if len(old_sightings) > 1000:
+            old_sightings.pop(0)
 
-        # Convert the submission time to a datetime object and make it offset-aware (in Eastern Time)
-        creation_time = eastern_timezone.localize(
-            datetime.strptime(submission_time_str, '%Y-%m-%d %H:%M'))
+        embed = create_sighting_embed(new_sighting)
 
-        # Calculate the time difference between current time and submission time
-        time_difference = current_time - creation_time
+        LOG.debug("Adding embed %s", embed)
+        embeds.append(embed)
 
-        # Only process the sighting if the checklist was submitted since the last run
-        if time_difference.total_seconds() <= UPDATE_INTERVAL.seconds:
-            old_sightings.append(new_sighting_id)
-
-            # If the list exceeds 10000 records, remove the oldest record(s) to maintain the limit
-            if len(old_sightings) > 10000:
-                old_sightings.pop(0)
-
-            # Create the message embed for the sighting
-            embed = create_sighting_embed(new_sighting)
-
-            LOG.debug("Adding embed %s", embed)
-            embeds.append(embed)
+    LOG.info('Total of %s sightings returned', len(sightings))
+    LOG.info('%s already seen previously', len(already_seen_this_run))
+    LOG.info('%s filtered out', len(filtered_out_this_run))
+    LOG.info('%s to send', len(embeds))
 
     return embeds
 
