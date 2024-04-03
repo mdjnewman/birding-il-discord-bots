@@ -1,6 +1,6 @@
 resource "google_service_account" "compute_engine_service_account" {
   account_id   = "birding-il-compute-engine"
-  display_name = "Birding IL Service Account for Compute"
+  display_name = "Birding Illinois Service Account for Compute"
 }
 
 resource "google_project_iam_member" "compute_engine_service_account_binding" {
