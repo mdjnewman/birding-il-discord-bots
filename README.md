@@ -1,6 +1,6 @@
-birding-il-discord-bots
-=======================
+Birding Illinois Discord server bots
+====================================
 
 Some Discord bots for the Birding Illinois server/guild.
 
-Kudos to @oliverburrus for initially writing these.
+Kudos to [@oliverburrus](https://github.com/oliverburrus/) for initially writing these.
