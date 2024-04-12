@@ -14,7 +14,7 @@ googleapis-common-protos==1.63.0
 grpc-google-iam-v1==0.13.0
 grpcio==1.62.1
 grpcio-status==1.62.1
-idna==3.6
+idna==3.7
 multidict==6.0.5
 proto-plus==1.23.0
 protobuf==4.25.3
