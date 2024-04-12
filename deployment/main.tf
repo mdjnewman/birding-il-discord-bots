@@ -23,6 +23,18 @@ resource "google_artifact_registry_repository" "artifact_repo" {
   repository_id          = "us.gcr.io"
 }
 
+data "cloudinit_config" "bot_compute_cloudinit" {
+  gzip          = false
+  base64_encode = false
+
+  part {
+    filename     = "cloud-config.yaml"
+    content_type = "text/cloud-config"
+
+    content = file("${path.module}/cloud-config.yaml")
+  }
+}
+
 
 resource "google_compute_instance" "bot_compute" {
   can_ip_forward      = false
@@ -30,9 +42,9 @@ resource "google_compute_instance" "bot_compute" {
   enable_display      = false
   machine_type        = "e2-micro"
   metadata = {
-    gce-container-declaration = "spec:\n  restartPolicy: Always\n  containers:\n  - name: instance-20240401-024615\n    image: 'us.gcr.io/birding-il/birding-il-bots:latest'\n\n# This container declaration format is not public API and may change without notice. Please\n# use gcloud command-line tool or Google Cloud Console to run Containers on Google Compute Engine."
+    user-data = "${data.cloudinit_config.bot_compute_cloudinit.rendered}"
   }
-  name    = "instance-20240401-024615"
+  name    = "birding-il-bot-compute"
   project = "birding-il"
   zone    = "us-central1-a"
 
@@ -43,7 +55,6 @@ resource "google_compute_instance" "bot_compute" {
 
   network_interface {
     network            = "https://www.googleapis.com/compute/v1/projects/birding-il/global/networks/default"
-    network_ip         = "10.128.0.2"
     stack_type         = "IPV4_ONLY"
     subnetwork         = "https://www.googleapis.com/compute/v1/projects/birding-il/regions/us-central1/subnetworks/default"
     subnetwork_project = "birding-il"
@@ -79,12 +90,12 @@ resource "google_compute_disk" "bot_compute_disk" {
   name = "instance-20240401-024615"
 
   enable_confidential_compute = false
-  image                       = "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-stable-109-17800-147-38"
+  image                       = "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-109-17800-147-54"
   licenses                    = ["https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos-pcid", "https://www.googleapis.com/compute/v1/projects/cos-cloud/global/licenses/cos", "https://www.googleapis.com/compute/v1/projects/cos-cloud-shielded/global/licenses/shielded-cos"]
   physical_block_size_bytes   = 4096
   project                     = "birding-il"
   size                        = 10
-  type                        = "pd-balanced"
+  type                        = "pd-standard"
   zone                        = "us-central1-a"
 
   guest_os_features {

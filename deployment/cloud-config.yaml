@@ -1,0 +1,22 @@
+#cloud-config
+
+write_files:
+- path: /etc/systemd/system/cloudservice.service
+  permissions: 0644
+  owner: root
+  content: |
+    [Unit]
+    Description=Start the birding-il-bots:latest container
+    Wants=gcr-online.target
+    After=gcr-online.target
+
+    [Service]
+    Environment="HOME=/home/cloudservice"
+    ExecStartPre=/usr/bin/docker-credential-gcr configure-docker
+    ExecStart=/usr/bin/docker run --pull=always --rm --name=birding-il-bots us.gcr.io/birding-il/birding-il-bots:latest
+    ExecStop=/usr/bin/docker stop birding-il-bots
+    ExecStopPost=/usr/bin/docker rm birding-il-bots
+
+runcmd:
+- systemctl daemon-reload
+- systemctl start cloudservice.service
