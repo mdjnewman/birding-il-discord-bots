@@ -324,6 +324,9 @@ def create_sighting_embed(sighting):
     return embed
 
 
+# Global var to track first fun
+first_run = True
+
 # Global variable to keep track of old sightings
 old_sightings = []
 
@@ -400,6 +403,7 @@ async def change_status():
 
 @tasks.loop(seconds=UPDATE_INTERVAL.seconds)
 async def check_for_new_sightings_task():
+    global first_run
     LOG.info("Entering check_for_new_sightings_task")
     try:
         embeds = check_for_new_sightings()
@@ -407,7 +411,12 @@ async def check_for_new_sightings_task():
         # Send the embed message to Discord channel
         channel = (client.get_channel(DISCORD_CHANNEL_ID) or await client.fetch_channel(DISCORD_CHANNEL_ID))
 
+        if first_run == True:
+            first_run = False
+            return
+
         for embed in embeds:
             await channel.send(embed=embed)
+
     except:
         LOG.error("Error while checking for new sightings", exc_info=1)
