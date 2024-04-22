@@ -57,6 +57,7 @@ filtered_species = {
     "Blue-gray Gnatcatcher",
     "Blue-headed Vireo",
     "Blue-winged Teal",
+    "Blue-winged Teal x Northern Shoveler",
     "Blue-winged Warbler",
     "Bobolink",
     "Bonaparte's Gull",
