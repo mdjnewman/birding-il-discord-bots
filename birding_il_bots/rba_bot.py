@@ -120,6 +120,7 @@ filtered_species = {
     "Glaucous Gull",
     "Golden-crowned Kinglet",
     "Golden-winged Warbler",
+    "Golden-winged x Blue-winged Warbler",
     "Grasshopper Sparrow",
     "Gray Catbird",
     "Gray-cheeked Thrush",
