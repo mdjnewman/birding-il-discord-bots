@@ -120,3 +120,22 @@ resource "google_compute_disk" "bot_compute_disk" {
     type = "VIRTIO_SCSI_MULTIQUEUE"
   }
 }
+
+resource "random_id" "rare-bird-excludes-suffix" {
+  byte_length = 8
+}
+
+resource "google_storage_bucket" "rare-bird-excludes" {
+  name          = "${data.google_client_config.current.project}-rare-bird-excludes-${random_id.rare-bird-excludes-suffix.hex}"
+  location      = "US"
+  force_destroy = true
+
+  public_access_prevention    = "enforced"
+  uniform_bucket_level_access = true
+}
+
+resource "google_storage_bucket_iam_member" "member" {
+  bucket = google_storage_bucket.rare-bird-excludes.id
+  role   = "roles/storage.objectViewer"
+  member = google_service_account.compute_engine_service_account.member
+}
