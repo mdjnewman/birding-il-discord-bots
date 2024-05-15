@@ -27,4 +27,4 @@ jobs:
         with:
           version: ">= 474.0.0"
       - name: "Upload data/rare-bird-excludes.txt"
-        run: "gcloud storage objects cp data/rare-bird-excludes.txt gs://birding-il-rare-bird-excludes-de72b11720035de4/"
+        run: "gcloud storage cp data/rare-bird-excludes.txt gs://birding-il-rare-bird-excludes-de72b11720035de4/"
