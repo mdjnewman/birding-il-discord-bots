@@ -3,8 +3,14 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
+    paths-ignore:
+      - ".github/workflows/update-rba-excludes.yml"
+      - "data/"
   pull_request:
     branches: [ "main" ]
+    paths-ignore:
+      - ".github/workflows/update-rba-excludes.yml"
+      - "data/"
 
 jobs:
 
