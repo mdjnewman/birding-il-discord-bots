@@ -1,3 +1,5 @@
+name: Publish RBA excludes list
+
 on:
   push:
     branches:
