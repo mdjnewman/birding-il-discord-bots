@@ -122,13 +122,14 @@ async def check_for_new_sightings_task():
     try:
         embeds = check_for_new_sightings()
 
-        if first_run == True:
-            first_run = False
-            return
-
         channels = list(filter(lambda channel: channel.name == CHANNEL_NAME, client.get_all_channels()))
 
         LOG.info("Found %s channels to send to", len(channels))
+
+        if first_run == True:
+            LOG.info("Skipping sending this time")
+            first_run = False
+            return
 
         for channel in channels:
             for embed in embeds:
