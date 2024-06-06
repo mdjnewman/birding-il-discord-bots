@@ -1,8 +1,8 @@
 import logging.config
 from pathlib import Path
 import asyncio
-from .agree_bot import client as agree_bot
-from .rba_bot import client as rba_bot
+from .agree.agree_bot import client as agree_bot
+from .rare_bird_alerts.rba_bot import client as rba_bot
 from .token_provider import get_token_for_bot
 
 source_path = Path(__file__).resolve()

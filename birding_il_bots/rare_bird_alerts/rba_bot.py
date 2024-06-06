@@ -4,18 +4,15 @@ from itertools import cycle
 from datetime import timedelta
 
 import discord
-import pytz
 import requests
 from discord.ext import tasks
 
-from .secret_provider import get_current_version_of_text_secret
+from ..secret_provider import get_current_version_of_text_secret
 from .filtered_species_provider import get_filtered_species
 
 LOG = logging.getLogger(__name__)
 
-# Replace YOUR_DISCORD_CHANNEL_ID with the ID of the channel where you want to send messages
-DISCORD_CHANNEL_ID = '1136054663674867912' # ebird-alerts in Birding IL
-# DISCORD_CHANNEL_ID = '1224892992037458021'  # ebird-rarities in test server
+CHANNEL_NAME = "ebird-alerts"
 
 # Replace YOUR_EBIRD_API_KEY with your eBird API key
 EBIRD_API_KEY = get_current_version_of_text_secret("ebird-api-key")
@@ -26,7 +23,7 @@ IL_REGION_CODE = 'US-IL'
 UPDATE_INTERVAL = timedelta(hours=1)
 
 # Initialize the Discord client
-intents = discord.Intents.none()
+intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 status = cycle(['Watching for Rare Birds',
                'Keeping an Eye on the Skies (or eBird)'])
@@ -64,15 +61,6 @@ def check_for_new_sightings():
         f'https://api.ebird.org/v2/data/obs/{IL_REGION_CODE}/recent/notable?back=1&detail=full', headers={'X-eBirdApiToken': EBIRD_API_KEY})
     response.raise_for_status()
     sightings = response.json()
-
-    # Get the current time in UTC timezone
-    current_time_utc = datetime.utcnow()
-
-    # Set the timezone to Eastern Time (US & Canada)
-    eastern_timezone = pytz.timezone('US/Eastern')
-
-    # Convert current_time_utc to Eastern Time
-    current_time = current_time_utc.astimezone(eastern_timezone)
 
     embeds = []
     already_seen_this_run = []
@@ -134,15 +122,17 @@ async def check_for_new_sightings_task():
     try:
         embeds = check_for_new_sightings()
 
-        # Send the embed message to Discord channel
-        channel = (client.get_channel(DISCORD_CHANNEL_ID) or await client.fetch_channel(DISCORD_CHANNEL_ID))
-
         if first_run == True:
             first_run = False
             return
 
-        for embed in embeds:
-            await channel.send(embed=embed)
+        channels = list(filter(lambda channel: channel.name == CHANNEL_NAME, client.get_all_channels()))
+
+        LOG.info("Found %s channels to send to", len(channels))
+
+        for channel in channels:
+            for embed in embeds:
+                await channel.send(embed=embed)
 
     except:
         LOG.error("Error while checking for new sightings", exc_info=1)

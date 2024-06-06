@@ -1,3 +1,4 @@
 .venv/
 SCRATCH.md
 deployment/.terraform/
+**/__pycache__/
