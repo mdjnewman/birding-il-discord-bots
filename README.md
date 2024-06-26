@@ -11,8 +11,7 @@ Pushing a new image
 No pipeline for this yet:
 
 ```sh
-docker build -t us.gcr.io/birding-il/birding-il-bots:latest .
-docker push us.gcr.io/birding-il/birding-il-bots:latest
+docker build -t us.gcr.io/birding-il/birding-il-bots:latest . && docker push us.gcr.io/birding-il/birding-il-bots:latest
 ```
 
 Deploying
