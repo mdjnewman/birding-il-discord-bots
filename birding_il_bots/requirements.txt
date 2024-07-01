@@ -64,7 +64,7 @@ pyasn1==0.6.0
     #   rsa
 pyasn1-modules==0.4.0
     # via google-auth
-requests==2.32.0
+requests==2.32.3
     # via
     #   -r requirements.in
     #   google-api-core
