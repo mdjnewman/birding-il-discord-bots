@@ -5,6 +5,23 @@ Some Discord bots for the Birding Illinois server/guild.
 
 Kudos to [@oliverburrus](https://github.com/oliverburrus/) for initially writing these.
 
+Upgrading dependencies
+----------------------
+
+```sh
+cd birding_il_bots/
+pip-compile --upgrade
+```
+
+Running locally
+---------------
+
+```sh
+# Assuming you're a member and have a config with this name. To read some required secrets & RBA exclude list.
+gcloud config configurations activate birding-il
+python -m birding_il_bots.main
+```
+
 Pushing a new image
 -------------------
 
