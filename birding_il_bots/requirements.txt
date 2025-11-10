@@ -26,7 +26,7 @@ frozenlist==1.4.1
     # via
     #   aiohttp
     #   aiosignal
-google-api-core==2.19.1
+google-api-core==2.28.1
     # via
     #   google-cloud-core
     #   google-cloud-storage
@@ -37,7 +37,7 @@ google-auth==2.33.0
     #   google-cloud-storage
 google-cloud-core==2.4.2
     # via google-cloud-storage
-google-cloud-storage==3.4.1
+google-cloud-storage==3.5.0
     # via -r requirements.in
 google-crc32c==1.5.0
     # via
