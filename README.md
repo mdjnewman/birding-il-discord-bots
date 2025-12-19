@@ -36,7 +36,7 @@ Deploying
 ---------
 
 ```sh
-gcloud compute ssh --plain --zone "us-central1-a" --project "birding-il" --command="sudo systemctl restart cloudservice.service" birding-il-bot-compute
+gcloud compute ssh --zone "us-central1-a" --project "birding-il" --command="sudo systemctl restart cloudservice.service" birding-il-bot-compute
 ```
 
 Rare Bird Alerts bot

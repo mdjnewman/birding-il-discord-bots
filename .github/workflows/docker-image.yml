@@ -1,5 +1,8 @@
 name: Docker Image CI
 
+permissions:
+  contents: read
+
 on:
   push:
     branches: [ "main" ]
@@ -11,9 +14,6 @@ on:
     paths-ignore:
       - ".github/workflows/update-rba-excludes.yml"
       - "data/**"
-
-permissions:
-  contents: read
 
 jobs:
 

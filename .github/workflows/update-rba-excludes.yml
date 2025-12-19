@@ -1,5 +1,8 @@
 name: Publish RBA excludes list
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:
