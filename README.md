@@ -10,6 +10,7 @@ Upgrading dependencies
 
 ```sh
 cd birding_il_bots/
+pip install pip-tools
 pip-compile --upgrade
 ```
 
