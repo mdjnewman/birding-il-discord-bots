@@ -3,7 +3,7 @@ import logging
 from google.cloud import storage
 
 
-def get_filtered_species_from_remote():
+def get_filtered_species_from_remote(filtered_species_filename: str) -> set[str]:
 
     storage_client = storage.Client()
 
@@ -13,7 +13,7 @@ def get_filtered_species_from_remote():
     # Note `Bucket.blob` differs from `Bucket.get_blob` as it doesn't retrieve
     # any content from Google Cloud Storage. As we don't need additional data,
     # using `Bucket.blob` is preferred here.
-    blob = bucket.blob("rare-bird-excludes.txt")
+    blob = bucket.blob(filtered_species_filename)
 
     contents = blob.download_as_bytes().decode("utf-8")
 
@@ -22,5 +22,5 @@ def get_filtered_species_from_remote():
     return set(lines)
 
 
-def get_filtered_species():
-    return get_filtered_species_from_remote()
+def get_filtered_species(filtered_species_filename: str) -> set[str]:
+    return get_filtered_species_from_remote(filtered_species_filename)

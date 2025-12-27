@@ -9,6 +9,7 @@ from discord.ext import tasks
 
 from ..secret_provider import get_current_version_of_text_secret
 from .filtered_species_provider import get_filtered_species
+from .servers import server_configs, filtered_species_filenames
 
 LOG = logging.getLogger(__name__)
 
@@ -16,9 +17,6 @@ CHANNEL_NAME = "ebird-alerts"
 
 # Replace YOUR_EBIRD_API_KEY with your eBird API key
 EBIRD_API_KEY = get_current_version_of_text_secret("ebird-api-key")
-
-# Illinois Region Code for eBird API
-IL_REGION_CODE = 'US-IL'
 
 UPDATE_INTERVAL = timedelta(hours=1)
 
@@ -54,11 +52,11 @@ first_run = True
 old_sightings = []
 
 
-def check_for_new_sightings():
+def check_for_new_sightings(region_code: str,  filtered_species: set[str]):
     """Fetch and process new bird sightings"""
     # Step 1: Fetch notable bird sightings from the eBird API
     response = requests.get(
-        f'https://api.ebird.org/v2/data/obs/{IL_REGION_CODE}/recent/notable?back=1&detail=full', headers={'X-eBirdApiToken': EBIRD_API_KEY})
+        f'https://api.ebird.org/v2/data/obs/{region_code}/recent/notable?back=1&detail=full', headers={'X-eBirdApiToken': EBIRD_API_KEY})
     response.raise_for_status()
     sightings = response.json()
 
@@ -69,7 +67,7 @@ def check_for_new_sightings():
     for new_sighting in sightings:
         # Create a unique ID for the sighting using species code, county, and observation date
         new_sighting_id = new_sighting['speciesCode'] + \
-            new_sighting['subnational2Name'] + new_sighting['obsDt'][:10]
+            new_sighting['subnational2Name'] + new_sighting['subnational1Code'] + new_sighting['obsDt'][:10]
 
         if new_sighting_id in old_sightings:
             already_seen_this_run.append(new_sighting_id)
@@ -79,7 +77,7 @@ def check_for_new_sightings():
             '(')[0].strip()  # Remove characters after "("
 
         # Check if the species is not in the filtered list
-        if comName in get_filtered_species():
+        if comName in filtered_species:
             filtered_out_this_run.append(new_sighting_id)
             continue
 
@@ -119,21 +117,27 @@ async def change_status():
 async def check_for_new_sightings_task():
     global first_run
     LOG.info("Entering check_for_new_sightings_task")
+
+    regions = set(map(lambda server_conf: server_conf.region, server_configs))
+    filtered_species = dict(map(lambda region: (region, get_filtered_species(filtered_species_filenames[region])), regions))
+
     try:
-        embeds = check_for_new_sightings()
-
-        channels = list(filter(lambda channel: channel.name == CHANNEL_NAME, client.get_all_channels()))
-
-        LOG.info("Found %s channels to send to", len(channels))
+        sightings = dict(map(lambda region: (region, check_for_new_sightings(region, filtered_species[region])), regions))
 
         if first_run == True:
             LOG.info("Skipping sending this time")
             first_run = False
             return
 
-        for channel in channels:
-            for embed in embeds:
-                await channel.send(embed=embed)
+        for server_conf in server_configs:
+
+            embeds = sightings[server_conf.region]
+
+            channels = list(filter(lambda channel: channel.name == server_conf.alerts_channel and channel.guild.id == server_conf.server_id, client.get_all_channels()))
+
+            for channel in channels:
+                for embed in embeds:
+                    await channel.send(embed=embed)
 
     except:
         LOG.error("Error while checking for new sightings", exc_info=1)
