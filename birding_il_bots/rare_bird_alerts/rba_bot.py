@@ -124,20 +124,24 @@ async def check_for_new_sightings_task():
     try:
         sightings = dict(map(lambda region: (region, check_for_new_sightings(region, filtered_species[region])), regions))
 
-        if first_run == True:
-            LOG.info("Skipping sending this time")
-            first_run = False
-            return
-
-        for server_conf in server_configs:
-
-            embeds = sightings[server_conf.region]
-
-            channels = list(filter(lambda channel: channel.name == server_conf.alerts_channel and channel.guild.id == server_conf.server_id, client.get_all_channels()))
-
-            for channel in channels:
-                for embed in embeds:
-                    await channel.send(embed=embed)
-
     except:
         LOG.error("Error while checking for new sightings", exc_info=1)
+        return
+
+    if first_run == True:
+        LOG.info("Skipping sending this time")
+        first_run = False
+        return
+
+    for server_conf in server_configs:
+
+        embeds = sightings[server_conf.region]
+
+        channels = list(filter(lambda channel: channel.name == server_conf.alerts_channel and channel.guild.id == server_conf.server_id, client.get_all_channels()))
+
+        for channel in channels:
+            try:
+                for embed in embeds:
+                    await channel.send(embed=embed)
+            except:
+                LOG.error(f"Error while sending to {channel.guild.id}", exc_info=1)
