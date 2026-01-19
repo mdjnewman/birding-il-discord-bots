@@ -10,6 +10,8 @@ aiohttp==3.13.3
     # via discord-py
 aiosignal==1.4.0
     # via aiohttp
+async-timeout==5.0.1
+    # via aiohttp
 attrs==25.4.0
     # via aiohttp
 certifi==2026.1.4
@@ -37,7 +39,7 @@ google-cloud-core==2.5.0
     # via google-cloud-storage
 google-cloud-secret-manager==2.26.0
     # via -r requirements.in
-google-cloud-storage==3.7.0
+google-cloud-storage==3.8.0
     # via -r requirements.in
 google-crc32c==1.8.0
     # via
@@ -102,6 +104,7 @@ typing-extensions==4.15.0
     # via
     #   aiosignal
     #   grpcio
+    #   multidict
 urllib3==2.6.3
     # via requests
 yarl==1.22.0

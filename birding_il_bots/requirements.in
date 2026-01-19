@@ -1,4 +1,4 @@
 discord.py~=2.6
 google-cloud-secret-manager~=2.26
-google-cloud-storage~=3.7
+google-cloud-storage~=3.8
 requests~=2.32
