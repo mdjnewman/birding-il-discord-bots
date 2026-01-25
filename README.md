@@ -42,8 +42,8 @@ gcloud compute ssh --zone "us-central1-a" --project "birding-il" --command="sudo
 Rare Bird Alerts bot
 --------------------
 
-The `Birding IL eBird Rarities Bot` will attempt to post to a channel named `#ebird-alerts` in any guild/server it is added to.
+The `Birding IL eBird Rarities Bot` will attempt to post only to servers configured in [servers.py](birding_il_bots/rare_bird_alerts/servers.py).
 
-The eBird `Recent notable observations` API returns a lot of results that we don't really consider worth posting (e.g. high counts), so anything that matches the [exclude list](./data/rare-bird-excludes.txt) is filtered out.
+The eBird `Recent notable observations` API returns a lot of results that we don't really consider worth posting (e.g. high counts), so anything that matches the [exclude lists](./data/) is filtered out.
 
 Text in parenthesis is trimmed from the name before matching (e.g. `(hybrid)`)
