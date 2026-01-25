@@ -91,10 +91,10 @@ def check_for_new_sightings(region_code: str,  filtered_species: set[str]):
         LOG.debug("Adding embed %s", embed)
         embeds.append(embed)
 
-    LOG.info('Total of %s sightings returned', len(sightings))
-    LOG.info('%s already seen previously', len(already_seen_this_run))
-    LOG.info('%s filtered out', len(filtered_out_this_run))
-    LOG.info('%s to send', len(embeds))
+    LOG.info('%s: Total of %s sightings returned', region_code, len(sightings))
+    LOG.info('%s: %s already seen previously', region_code, len(already_seen_this_run))
+    LOG.info('%s: %s filtered out', region_code, len(filtered_out_this_run))
+    LOG.info('%s: %s to send', region_code, len(embeds))
 
     return embeds
 
