@@ -1,9 +1,9 @@
 Acadian Flycatcher
 Acanthis/Spinus sp.
-Accipitrine hawk sp. (former Accipiter sp.)
+Accipitrine hawk sp.
 African Collared-Dove
 Alder Flycatcher
-Alder/Willow Flycatcher (Traill's Flycatcher)
+Alder/Willow Flycatcher
 American Avocet
 American Bittern
 American Black Duck
@@ -39,14 +39,14 @@ Bell's Vireo
 Belted Kingfisher
 bird sp.
 Black-and-white Warbler
-Black-and-white x Chestnut-sided Warbler (hybrid)
+Black-and-white x Chestnut-sided Warbler
 Black-bellied Plover
 Black-bellied Plover/golden-plover sp.
 blackbird sp.
 Blackburnian Warbler
 Black-capped Chickadee
 Black-crowned Night Heron
-Black-headed x Ring-billed Gull (hybrid)
+Black-headed x Ring-billed Gull
 Black-necked Stilt
 Blackpoll Warbler
 Black Swan
@@ -59,22 +59,22 @@ Blue-headed Vireo
 Blue Jay
 Blue-winged/Cinnamon Teal
 Blue-winged Teal
-Blue-winged Teal x Northern Shoveler (hybrid)
+Blue-winged Teal x Northern Shoveler
 Blue-winged Warbler
-Blue-winged x Cinnamon Teal (hybrid)
-Blue-winged x Green-winged Teal (hybrid)
+Blue-winged x Cinnamon Teal
+Blue-winged x Green-winged Teal
 Bobolink
 Bonaparte's Gull
 Brewer's Blackbird
-Brewster's Warbler (hybrid)
+Brewster's Warbler
 Broad-winged Hawk
 Brown Creeper
 Brown-headed Cowbird
 Brown Thrasher
 Budgerigar
 Bufflehead
-Bufflehead x Common Goldeneye (hybrid)
-Bufflehead x Hooded Merganser (hybrid)
+Bufflehead x Common Goldeneye
+Bufflehead x Hooded Merganser
 Bullock's/Baltimore Oriole
 Buteo sp.
 Cackling/Canada Goose
@@ -107,14 +107,14 @@ Common/Barrow's Goldeneye
 Common/Black Scoter
 Common Gallinule
 Common Goldeneye
-Common Goldeneye x Hooded Merganser (hybrid)
+Common Goldeneye x Hooded Merganser
 Common Grackle
 Common Loon
 Common Merganser
 Common Nighthawk
 Common/Red-breasted Merganser
 Common Tern
-Common x Barrow's Goldeneye (hybrid)
+Common x Barrow's Goldeneye
 Common Yellowthroat
 Connecticut/MacGillivray's/Mourning Warbler
 Cooper's Hawk
@@ -122,16 +122,16 @@ Cooper's Hawk/American Goshawk
 cormorant sp.
 corvid sp.
 crow sp.
-cuckoo sp. (Cuculidae sp.)
+cuckoo sp.
 dabbling duck sp.
 Dark-eyed Junco
 Dickcissel
 diurnal raptor sp.
-Domestic goose sp. (Domestic type)
-Domestic goose sp. x Canada Goose (hybrid)
+Domestic goose sp.
+Domestic goose sp. x Canada Goose
 Double-crested Cormorant
 Double-crested/Neotropic Cormorant
-Double-crested x Neotropic Cormorant (hybrid)
+Double-crested x Neotropic Cormorant
 Downy/Hairy Woodpecker
 Downy Woodpecker
 duck sp.
@@ -161,17 +161,17 @@ Forster's Tern
 Fox Sparrow
 Franklin's Gull
 Gadwall
-Gadwall x Mallard (hybrid)
-Gadwall x Northern Pintail (hybrid)
+Gadwall x Mallard
+Gadwall x Northern Pintail
 Glossy/White-faced Ibis
-Glossy x White-faced Ibis (hybrid)
+Glossy x White-faced Ibis
 godwit sp.
 Golden/Bald Eagle
 Golden-crowned Kinglet
 golden-plover sp.
 Golden-winged/Blue-winged Warbler
 Golden-winged Warbler
-Golden-winged x Blue-winged Warbler (hybrid)
+Golden-winged x Blue-winged Warbler
 goose sp.
 grackle sp.
 Grasshopper/Henslow's Sparrow
@@ -179,8 +179,8 @@ Grasshopper Sparrow
 Gray Catbird
 Gray-cheeked Thrush
 Graylag Goose
-Graylag x Canada Goose (hybrid)
-Graylag x Swan Goose (hybrid)
+Graylag x Canada Goose
+Graylag x Swan Goose
 Gray Partridge
 Great Blue Heron
 Great Crested Flycatcher
@@ -188,7 +188,7 @@ Great Egret
 Greater/Lesser Scaup
 Greater Scaup
 Greater White-fronted Goose
-Greater White-fronted x Canada Goose (hybrid)
+Greater White-fronted x Canada Goose
 Greater Yellowlegs
 Great Horned Owl
 Great-tailed Grackle
@@ -215,7 +215,7 @@ House/Eurasian Tree Sparrow
 House Finch
 House/Purple Finch
 House Sparrow
-House x Eurasian Tree Sparrow (hybrid)
+House x Eurasian Tree Sparrow
 hummingbird sp.
 ibis sp.
 Indian Peafowl
@@ -230,7 +230,7 @@ large shorebird sp.
 Lark Sparrow
 Larus sp.
 Laughing/Franklin's Gull
-Lawrence's Warbler (hybrid)
+Lawrence's Warbler
 Least Bittern
 Least Flycatcher
 Least Sandpiper
@@ -243,7 +243,7 @@ Lesser Yellowlegs
 Lincoln's Sparrow
 Lincoln's/Swamp Sparrow
 Little Blue Heron
-Little Blue Heron x Snowy Egret (hybrid)
+Little Blue Heron x Snowy Egret
 Loggerhead/Northern Shrike
 Loggerhead Shrike
 Long-billed Dowitcher
@@ -256,8 +256,8 @@ Magnolia Warbler
 Mallard
 Mallard/American Black Duck
 Mallard/Mexican Duck
-Mallard x American Black Duck (hybrid)
-Mallard x Northern Pintail (hybrid)
+Mallard x American Black Duck
+Mallard x Northern Pintail
 Mandarin Duck
 Marsh Wren
 Melanerpes sp.
@@ -289,8 +289,8 @@ Northern Parula
 Northern Pintail
 Northern Rough-winged Swallow
 Northern Shoveler
-Northern Shoveler x Gadwall (hybrid)
-Northern Shoveler x Mallard (hybrid)
+Northern Shoveler x Gadwall
+Northern Shoveler x Mallard
 Northern Waterthrush
 Northern Yellow Warbler
 nuthatch sp.
@@ -332,7 +332,7 @@ Redhead
 Red-headed Woodpecker
 Red Junglefowl
 Red-legged/Rock Partridge
-Red-naped x Red-breasted Sapsucker (hybrid)
+Red-naped x Red-breasted Sapsucker
 Red-necked/Little Stint
 Red/Red-necked Phalarope
 Red-shouldered Hawk
@@ -376,9 +376,9 @@ small falcon sp.
 small plover sp.
 Snow Goose
 Snow/Ross's Goose
-Snow x Canada Goose (hybrid)
-Snow x Greater White-fronted Goose (hybrid)
-Snow x Ross's Goose (hybrid)
+Snow x Canada Goose
+Snow x Greater White-fronted Goose
+Snow x Ross's Goose
 Snowy Egret
 Solitary Sandpiper
 Song Sparrow
@@ -386,9 +386,9 @@ Sora
 Spinus sp.
 Spizella sp.
 Spizella sp./American Tree Sparrow
-Spotted/Eastern Towhee (Rufous-sided Towhee)
+Spotted/Eastern Towhee
 Spotted Sandpiper
-Spotted x Eastern Towhee (hybrid)
+Spotted x Eastern Towhee
 Sterna sp.
 Stilt Sandpiper
 Summer/Scarlet Tanager
@@ -398,8 +398,8 @@ swallow sp.
 Swamp Sparrow
 Swan Goose
 swan sp.
-Swan x Canada Goose (hybrid)
-tanager sp. (Piranga sp.)
+Swan x Canada Goose
+tanager sp.
 teal sp.
 Tennessee Warbler
 tern sp.
@@ -424,10 +424,10 @@ Western/Eastern Wood-Pewee
 Western Kingbird
 Western Meadowlark
 Western/Semipalmated Sandpiper
-Western x Clark's Grebe (hybrid)
+Western x Clark's Grebe
 White-breasted Nuthatch
 White-crowned Sparrow
-White-crowned x White-throated Sparrow (hybrid)
+White-crowned x White-throated Sparrow
 white egret sp.
 White-eyed Vireo
 White-faced Ibis
@@ -449,9 +449,9 @@ Worm-eating Warbler
 wren sp.
 Yellow-bellied Flycatcher
 Yellow-bellied/Red-naped Sapsucker
-Yellow-bellied/Red-naped x Red-breasted Sapsucker (hybrid)
+Yellow-bellied/Red-naped x Red-breasted Sapsucker
 Yellow-bellied Sapsucker
-Yellow-bellied x Red-naped Sapsucker (hybrid)
+Yellow-bellied x Red-naped Sapsucker
 Yellow-billed/Black-billed Cuckoo
 Yellow-billed Cuckoo
 Yellow-billed Pintail
