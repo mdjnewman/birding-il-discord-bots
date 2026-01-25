@@ -11,8 +11,8 @@ class ServerConfig:
 server_configs: list[ServerConfig] = [
     ServerConfig(1219333971851346030, "ebird-alerts", "US-IL"), # test server
     ServerConfig(1100492398129328232, "ebird-alerts", "US-IL"), # Birding Illinois
-    ServerConfig(1244461044819038278, "ebird-alerts", "US-IL") #, # FBCC
-    # ServerConfig(711544018378686496, "mo-ebird-alerts", "US-MO") # Missouri server
+    ServerConfig(1244461044819038278, "ebird-alerts", "US-IL"), # FBCC
+    ServerConfig(711544018378686496, "mo-ebird-alerts", "US-MO") # Missouri server
 ]
 
 filtered_species_filenames: dict[str, str] = {
