@@ -16,6 +16,11 @@ Text in parenthesis is trimmed from the name before matching (e.g. `(hybrid)`).
 
 Shout out if you want to add a new server! Any `country`, `subnational1` (state), `subnational2` (county in the US) or `location` (e.g. hotspot) can be used, and exclude lists can be set per region.
 
+Messages look something like the following:
+
+<img width="592" height="390" alt="Screenshot of the message that the eBird Rarities Bot posts, showing that the message includes Species, Observer, Location, Date and a link the the eBird checklist" src="https://github.com/user-attachments/assets/48be654e-2e34-4932-8aac-8381d3a98034" />
+
+
 Birding IL Agree Bot
 --------------------
 
