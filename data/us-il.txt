@@ -14,6 +14,7 @@ American Robin
 American Tree Sparrow
 American White Pelican
 American Wigeon
+American Wigeon x Mallard
 American Woodcock
 Baird's Sandpiper
 Bald Eagle
@@ -41,10 +42,12 @@ Blue Grosbeak
 Blue-headed Vireo
 Blue Jay
 Blue-winged Teal
+Blue-winged Teal x Northern Shoveler
 Blue-winged Warbler
 Bobolink
 Bonaparte's Gull
 Brewer's Blackbird
+Brewster's Warbler
 Broad-winged Hawk
 Brown Creeper
 Brown-headed Cowbird
@@ -58,6 +61,7 @@ Canvasback
 Cape May Warbler
 Carolina Chickadee
 Carolina Wren
+Carolina x Black-capped Chickadee
 Caspian Tern
 Cedar Waxwing
 Chestnut-sided Warbler
@@ -78,6 +82,7 @@ Connecticut Warbler
 Cooper's Hawk
 Dark-eyed Junco
 Dickcissel
+Domestic goose sp. x Canada Goose
 Double-crested Cormorant
 Downy Woodpecker
 Dunlin
@@ -100,9 +105,11 @@ Gadwall
 Glaucous Gull
 Golden-crowned Kinglet
 Golden-winged Warbler
+Golden-winged x Blue-winged Warbler
 Grasshopper Sparrow
 Gray Catbird
 Gray-cheeked Thrush
+Graylag x Canada Goose
 Great Black-backed Gull
 Great Blue Heron
 Great Crested Flycatcher
@@ -110,6 +117,7 @@ Great Egret
 Greater Prairie-Chicken
 Greater Scaup
 Greater White-fronted Goose
+Greater White-fronted x Canada Goose
 Greater Yellowlegs
 Great Horned Owl
 Green Heron
@@ -130,6 +138,8 @@ Kentucky Warbler
 Killdeer
 Lapland Longspur
 Lark Sparrow
+Laughing x Ring-billed Gull
+Lawrence's Warbler
 Least Bittern
 Least Flycatcher
 Least Sandpiper
@@ -145,6 +155,8 @@ Long-tailed Duck
 Louisiana Waterthrush
 Magnolia Warbler
 Mallard
+Mallard x American Black Duck
+Mallard x Northern Pintail
 Marsh Wren
 Merlin
 Monk Parakeet
@@ -218,6 +230,7 @@ Short-billed Dowitcher
 Short-eared Owl
 Snow Bunting
 Snow Goose
+Snow x Ross's Goose
 Snowy Egret
 Solitary Sandpiper
 Song Sparrow
@@ -228,6 +241,7 @@ Summer Tanager
 Surf Scoter
 Swainson's Thrush
 Swamp Sparrow
+Swan Goose x Canada Goose
 Tennessee Warbler
 Tree Swallow
 Trumpeter Swan
