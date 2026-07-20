@@ -41,7 +41,7 @@ google-auth==2.55.1
     #   google-cloud-storage
 google-cloud-core==2.6.0
     # via google-cloud-storage
-google-cloud-secret-manager==2.29.0
+google-cloud-secret-manager==2.30.0
     # via -r requirements.in
 google-cloud-storage==3.13.0
     # via -r requirements.in
