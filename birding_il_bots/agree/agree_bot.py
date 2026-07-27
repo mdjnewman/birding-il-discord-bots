@@ -11,6 +11,7 @@ LOG = logging.getLogger(__name__)
 
 # Role name to be removed when a user agrees to the rules
 NEW_MEMBER_ROLE_NAME = "New Member"
+WELCOME_CHANNEL_NAME = "rules"
 
 # Regular expression pattern to match different formats for agreeing
 AGREE_PATTERN = re.compile(r'(?i)^\s*[!i]\s*agree\s*(.*)$')
@@ -35,6 +36,9 @@ async def on_message(message):
     LOG.debug("Received message %s", message)
     # Ignore messages sent by the bot itself
     if message.author == client.user:
+        return
+
+    if getattr(message.channel, "name", None) != WELCOME_CHANNEL_NAME:
         return
 
     # Check if the message matches the agree pattern
@@ -110,9 +114,8 @@ async def on_member_join(member):
     await member.add_roles(role)
 
     # Send a welcome message in the specified channel as an embed
-    welcome_channel_name = "rules"  # Replace with the name of your desired channel
     welcome_channel = discord.utils.get(
-        member.guild.channels, name=welcome_channel_name)
+        member.guild.channels, name=WELCOME_CHANNEL_NAME)
     if welcome_channel:
         welcome_embed = discord.Embed(
             title="Welcome to the Server!",
