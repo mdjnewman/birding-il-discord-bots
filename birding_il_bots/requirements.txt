@@ -43,7 +43,7 @@ google-cloud-core==2.6.0
     # via google-cloud-storage
 google-cloud-secret-manager==2.30.0
     # via -r requirements.in
-google-cloud-storage==3.13.1
+google-cloud-storage==3.14.1
     # via -r requirements.in
 google-crc32c==1.8.0
     # via
